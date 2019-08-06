@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (ParseUser.getCurrentUser() != null) {
             ParseUser.getCurrentUser().logOut();
         }
-
     }
 
     @Override
@@ -69,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                         Toast.makeText(LoginActivity.this,
                                                 user.get("username") + " is Logged in successfully",
                                                 Toast.LENGTH_LONG).show();
+                                        transitionToSocialMediaActivity();
                                     } else {
                                         Toast.makeText(LoginActivity.this, e.getMessage(),
                                                 Toast.LENGTH_LONG).show();
@@ -93,5 +93,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void transitionToSocialMediaActivity() {
+        Intent intent = new Intent(LoginActivity.this, SocialMediaActivity.class);
+        startActivity(intent);
     }
 }
